@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/accelon/slink#readme",
   "dependencies": {
-    "docx2js": "^0.1.0-alpha.2"
+    "docx2js": "^0.1.0-alpha.2",
+    "fast-xml-parser": "^5.0.9",
+    "jszip": "^3.10.1"
   }
 }

@@ -19,9 +19,11 @@ ctx.readZipBuffer=JSZip.loadAsync;
 ctx.idmap=Allnames;
 
 ctx.onDocStart=(ctx,fn)=>{
-    console.log(fn)
     ctx.lawid=ctx.idmap[fn];
     ctx.ruleid='';//條號
+}
+ctx.onDocEnd=(ctx,fn)=>{
+    console.log(fn,ctx.currentoutput?.length)
 }
 const unknownsegnames={};
 const parseLawRule=(ctx,ruleid,t)=>{
@@ -29,7 +31,7 @@ const parseLawRule=(ctx,ruleid,t)=>{
     //立法理由，可以取消。
     //刪除理由，
     const m=t.match(/（([^\^\{}]+)）/);
-    if (m) console.log(m[1])
+    //if (m) console.log(m[1])
     return t;
 }
 ctx.onPara=(ctx,para)=>{
@@ -48,10 +50,10 @@ ctx.onPara=(ctx,para)=>{
                 const segname=line.substr(1,at-1);
                 if (Segnames[segname]) {
                     ctx.segid=Segnames[segname];
-                } else {
-                    if (!unknownsegnames[segname]) unknownsegnames[segname]=0;
-                    unknownsegnames[segname]++;
-                }
+                } 
+                if (!unknownsegnames[segname]) unknownsegnames[segname]=0;
+                unknownsegnames[segname]++;
+                
             } else if (~line.indexOf('修正前條文')){ 
                 //parseRevision(line);
                 
@@ -63,3 +65,4 @@ ctx.onPara=(ctx,para)=>{
 await processDocuments(ctx);
 writeChanged('unknownsegnames.txt',fromObj(unknownsegnames,true).join('\n'),true)
 //fs.wconsole.log( )
+console.log(fromObj(unknownsegnames,true))

@@ -61,6 +61,11 @@ ctx.onPara=(ctx,para)=>{
     para=tidy(para)
     let out='';
     // console.log(para)
+
+    if (~para.indexOf('[回索引]')||~para.indexOf('[回首頁]')||~para.indexOf('本檔法規資料來源為官方資訊網')) {
+        console.log('index')
+        return;
+    }    
     const m=para.match(/bm\{id:"([^\}第]+)"\}第([^條]+)條之?([\d]*)/);
     if (m) { //法條開始
         out=parseLawRule(ctx , m[1], para.slice(m.index+m[0].length));
@@ -69,6 +74,7 @@ ctx.onPara=(ctx,para)=>{
         let lines=para.replace(/【/g,'\n【').split('\n').filter(it=>!!it);
         for (let i=0;i<lines.length;i++) {
             let line=lines[i];
+
             if (line.startsWith('【')){
                 const at=line.indexOf('】',1);
                 const segname=line.substr(1,at-1);

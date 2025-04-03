@@ -63,7 +63,7 @@ ctx.onPara=(ctx,para)=>{
     // console.log(para)
 
     if (~para.indexOf('[回索引]')||~para.indexOf('[回首頁]')||~para.indexOf('本檔法規資料來源為官方資訊網')) {
-        console.log('index')
+        //console.log('index')
         return;
     }    
     const m=para.match(/bm\{id:"([^\}第]+)"\}第([^條]+)條之?([\d]*)/);

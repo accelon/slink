@@ -24,7 +24,7 @@ ctx.onDocStart=(ctx,fn)=>{
 }
 ctx.onDocEnd=(ctx,fn)=>{
    console.log(fn,ctx.currentoutput?.length)
-   writeChanged(outdir+ fn.replace('.docx','.off'),output.join('\n'),true);
+   writeChanged(outdir+ fn.replace('.docx','.off'),output.join('\n'),false);
    output.length=0;
 }
 const output=[];

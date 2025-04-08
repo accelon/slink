@@ -1,4 +1,4 @@
-import { fromObj,nodefs,contextByFormat, processDocuments, writeChanged } from 'ptk/nodebundle.cjs'
+import { fromObj,nodefs,contextByFormat, processDocuments, writeChanged } from './nodebundle.cjs'
 await nodefs;
 import JSZip from 'jszip'
 import { Allnames } from './allnames.js';

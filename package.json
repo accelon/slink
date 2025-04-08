@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/accelon/slink#readme",
   "dependencies": {
-    "fast-xml-parser": "^5.0.9",
     "jszip": "^3.10.1"
   }
 }

@@ -3,7 +3,7 @@ import { tidy } from './tidy.js'
 import { Segnames } from './segnames.js';
 const output=[];
 const unknownsegnames={};
-const outdir='md/';
+const outdir='slink/';
 export const ctx={
 rels:{},
 ext:'md',
